@@ -1,5 +1,8 @@
 <?php
 
+# Distributed Algorithms for Message Passing Systems
+# Algorithm from Fig 1.7
+
 require __DIR__ . '/../vendor/autoload.php';
 
 use Phacterl\Runtime\Scheduler;
@@ -14,8 +17,7 @@ class TNode extends Actor {
             'parent' => null,
             'neighbors' => array(),
             'expected_msg' => 0,
-            'children' => array(),
-            'value' => null
+            'children' => array()
         );
     }
 
@@ -32,7 +34,7 @@ class TNode extends Actor {
             $this->send($idj,
                 new Message(
                     'go',
-                    array('sender' => $this->self(), 'data' => $msg['data'], 'name' => $state['name'])
+                    array('sender' => $this->self(), 'data' => $msg['data'])
                 )
             );
         }
@@ -55,7 +57,7 @@ class TNode extends Actor {
                 $this->send($msg['sender'],
                     new Message(
                         'back',
-                        array('sender' => $this->self(), 'value' => $this->getValue($state), 'name' => $state['name'])
+                        array('sender' => $this->self(), 'value' => $this->getValue($state))
                     )
                 );
             } else {
@@ -65,7 +67,7 @@ class TNode extends Actor {
                             $k,
                             new Message(
                                 'go',
-                                array('sender' => $this->self(), 'data' => $msg['data'], 'name' => $state['name'])
+                                array('sender' => $this->self(), 'data' => $msg['data'])
                             )
                         );
                     }
@@ -75,7 +77,7 @@ class TNode extends Actor {
             $this->send($msg['sender'],
                 new Message(
                     'back',
-                    array('sender' => $this->self(), 'value' => array(), 'name' => $state['name'])
+                    array('sender' => $this->self(), 'value' => array())
                 )
             );
         }
@@ -99,7 +101,7 @@ class TNode extends Actor {
             if ($pr != $this->self()) {
                 $state['children'][] = $this->getValue($state);
                 $value_set = $state['children'];
-                $this->send($pr, new Message('back', array('sender' => $this->self(), 'value' => $value_set, 'name' => $state['name'])));
+                $this->send($pr, new Message('back', array('sender' => $this->self(), 'value' => $value_set)));
             } elseif ($pr == $this->self()) {
                 $r = $this->compute($state['children']);
                 echo sprintf("proc %s computed: %s\n", $state['name'], $r);

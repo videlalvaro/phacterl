@@ -1,5 +1,8 @@
 <?php
 
+# Distributed Algorithms for Message Passing Systems
+# Algorithm from Fig 1.7
+
 require __DIR__ . '/../vendor/autoload.php';
 
 use Phacterl\Runtime\Scheduler;
