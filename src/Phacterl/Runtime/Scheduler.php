@@ -6,6 +6,8 @@ namespace Phacterl\Runtime;
 
 class Scheduler
 {
+    protected $msg_count = 0;
+
     protected $pids = array();
     protected $processes = array();
 
@@ -49,11 +51,12 @@ class Scheduler
     public function send($pid, $msg) {
         if (isset($this->processes[$pid])) {
             $this->processes[$pid]['inbox'][] = $msg;
+            $this->msg_count++;
         }
     }
 
     public function schedule() {
-        if (!empty($this->processes)) {
+        if ($this->msg_count > 0 && !empty($this->processes)) {
             $pid = array_shift($this->pids);
             $p_meta = $this->processes[$pid];
 
@@ -73,6 +76,8 @@ class Scheduler
 
                 if ($restack) {
                     array_push($p_meta['inbox'], $msg);
+                } else {
+                    $this->msg_count--;
                 }
 
                 $this->processes[$pid] = $p_meta;
