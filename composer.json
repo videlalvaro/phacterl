@@ -1,0 +1,7 @@
+{    
+    "name": "videlalvaro/phacterl",
+    "type": "library",
+    "autoload": {
+        "psr-4": {"Phacterl\\": "src/Phacterl"}
+    }
+}
