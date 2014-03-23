@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use Phacterl\Runtime\Scheduler;
 use Phacterl\Actor\Actor;
