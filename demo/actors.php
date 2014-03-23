@@ -32,7 +32,7 @@ class Counter extends Actor {
 
     public function handle_get_count($msg, $state) {
         echo "handle_get_count: ", $msg['sender'], "\n";
-        $this->runtime->send($msg['sender'], new Message('count', $state['count']));
+        $this->send($msg['sender'], new Message('count', $state['count']));
         return $state;
     }
 }
@@ -40,10 +40,10 @@ class Counter extends Actor {
 class CounterClient extends Actor {
 
     public function init($args) {
-        $this->runtime->send($args['count_server'], new Message('incr', rand(1, 10)));
-        $this->runtime->send($args['count_server'], new Message('incr', rand(1, 10)));
-        $this->runtime->send($args['count_server'], new Message('decr', rand(1, 10)));
-        $this->runtime->send($args['count_server'], new Message('get_count', array('sender' => $this->self())));
+        $this->send($args['count_server'], new Message('incr', rand(1, 10)));
+        $this->send($args['count_server'], new Message('incr', rand(1, 10)));
+        $this->send($args['count_server'], new Message('decr', rand(1, 10)));
+        $this->send($args['count_server'], new Message('get_count', array('sender' => $this->self())));
         return array('server' => $args['count_server']);
     }
 
@@ -57,13 +57,13 @@ class CounterClient extends Actor {
         $next = rand(0, 2);
         switch ($next) {
         case 0:
-            $this->runtime->send($state['server'], new Message('incr', rand(1, 20)));
+            $this->send($state['server'], new Message('incr', rand(1, 20)));
             break;
         case 1:
-            $this->runtime->send($state['server'], new Message('decr', rand(1, 20)));
+            $this->send($state['server'], new Message('decr', rand(1, 20)));
             break;
         case 2:
-            $this->runtime->send($state['server'], new Message('get_count', array('sender' => $this->self())));
+            $this->send($state['server'], new Message('get_count', array('sender' => $this->self())));
             break;
         }
         return $state;

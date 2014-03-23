@@ -19,6 +19,10 @@ abstract class Actor {
         return $this->id;
     }
 
+    public function send($id, $msg) {
+        $this->runtime->send($id, $msg);
+    }
+
     abstract public function init($args);
     abstract public function receive();
 }
