@@ -88,15 +88,10 @@ class TNode extends Actor {
         $state['expected_msg']--;
 
         if (!empty($msg['value'])) {
-            if (is_array($msg['value'])) {
-                $state['children'] = array_merge($state['children'], $msg['value']);
-            } else {
-                $state['children'][] = $msg['value'];
-            }
+            $state['children'] = array_merge($state['children'], $msg['value']);
         }
 
         if ($state['expected_msg'] == 0) {
-            // calc value_set of all the children in array with current value
             $pr = $state['parent'];
             if ($pr != $this->self()) {
                 $state['children'][] = $this->getValue($state);
