@@ -6,6 +6,7 @@ namespace Phacterl\Runtime;
 
 class Scheduler
 {
+    protected $run = true;
     protected $msg_count = 0;
 
     protected $pids = array();
@@ -16,7 +17,11 @@ class Scheduler
 
     public function run() {
         register_tick_function(array($this, 'schedule'));
-        while (true) {};
+        while ($this->run) {};
+    }
+
+    public function stop() {
+        $this->run = false;
     }
 
     public function spawn($m, $args = array()) {
