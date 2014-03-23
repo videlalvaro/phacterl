@@ -2,7 +2,7 @@
 
 declare(ticks=1);
 
-namespace Phacterl;
+namespace Phacterl\Runtime;
 
 class Scheduler
 {

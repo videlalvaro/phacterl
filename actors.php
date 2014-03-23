@@ -2,47 +2,9 @@
 
 require 'vendor/autoload.php';
 
-use Phacterl\Scheduler;
-
-class Message {
-
-    protected $tag;
-    protected $data;
-
-    public function __construct($tag, $data) {
-        $this->tag = $tag;
-        $this->data = $data;
-    }
-
-    public function getTag() {
-        return $this->tag;
-    }
-
-    public function getData() {
-        return $this->data;
-    }
-}
-
-abstract class Actor {
-
-    protected $id;
-    protected $runtime;
-
-    public function setId($id) {
-        $this->id = $id;
-    }
-
-    public function setScheduler($runtime) {
-        $this->runtime = $runtime;
-    }
-
-    public function self() {
-        return $this->id;
-    }
-
-    abstract public function init($args);
-    abstract public function receive();
-}
+use Phacterl\Runtime\Scheduler;
+use Phacterl\Actor\Actor;
+use Phacterl\Message\Message;
 
 class Counter extends Actor {
 
