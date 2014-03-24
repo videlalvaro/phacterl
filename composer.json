@@ -1,7 +1,23 @@
 {    
     "name": "videlalvaro/phacterl",
     "type": "library",
+    "description": "Actor Model, in PHP",
+    "homepage": "https://github.com/videlalvaro/phacterl",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alvaro Videla",
+            "email": "videlalvaro@gmail.com",
+            "homepage": "http://videlalvaro.github.io",
+            "role": "Developer"
+        }
+    ],
     "autoload": {
-        "psr-4": {"Phacterl\\": "src/Phacterl"}
+        "psr-4": {
+            "Phacterl\\": "src/Phacterl"
+        }
+    },
+    "require": {
+        "php": ">=5.3.0"
     }
 }
