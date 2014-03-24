@@ -4,6 +4,8 @@ Implementation of The Actor Model in PHP.
 
 ## Installation ##
 
+Add `"videlalvaro/phacterl": "dev-master"` to your `composer.json` `require` section.
+
 ## Usage ##
 
 Your _Actors_ need to extend the abstract class Actor for example, and
