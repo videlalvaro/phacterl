@@ -1,7 +1,5 @@
 <?php
 
-declare(ticks=1);
-
 namespace Phacterl\Runtime;
 
 class Scheduler
@@ -16,8 +14,9 @@ class Scheduler
     }
 
     public function run() {
-        register_tick_function(array($this, 'schedule'));
-        while ($this->run) {};
+        while ($this->run) {
+            $this->schedule();
+        };
     }
 
     public function stop() {
