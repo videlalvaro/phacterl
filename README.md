@@ -28,7 +28,7 @@ class Counter extends Actor {
 }
 ```
 
-The method init should return an array that would be the _State_ of the process. The runtime system will take care of managing the process state.
+The method `init` should return an array that would be the _State_ of the process. The runtime system will take care of managing the process state.
 
 The method `receive` should return an array with strings specifying to which _message tags_ this process responds to.
 
