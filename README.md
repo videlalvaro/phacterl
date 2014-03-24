@@ -38,7 +38,7 @@ In our case, the process `Counter` should also provide a method called `handle_i
 
 A handler is a function that takes two parameters, a `Message` and the process `State` and returns a new state, like this:
 
-```
+```php
 class Counter extends Actor {
 // snip
 
