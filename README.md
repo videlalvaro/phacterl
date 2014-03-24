@@ -26,7 +26,7 @@ class Counter extends Actor {
         return array('incr', 'get_count');
     }
 }
-
+```
 
 The method init should return an array that would be the _State_ of the process. The runtime system will take care of managing the process state.
 
