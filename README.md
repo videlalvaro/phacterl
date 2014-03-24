@@ -87,6 +87,10 @@ $pid = $scheduler->spawn('Counter', array());
 $scheduler->run();
 ```
 
+## Stoping the System ##
+
+From inside an actor you can simply call `$this->stop()`. Otherwise call `$scheduler->stop()`.
+
 ## Examples ##
 
 On the demo folder you can find many examples which are
