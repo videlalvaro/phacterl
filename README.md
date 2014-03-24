@@ -2,6 +2,8 @@
 
 Implementation of The Actor Model in PHP.
 
+![https://raw.githubusercontent.com/videlalvaro/phacterl/master/actors.gif](https://raw.githubusercontent.com/videlalvaro/phacterl/master/actors.gif)
+
 ## Installation ##
 
 Add `"videlalvaro/phacterl": "dev-master"` to your `composer.json` `require` section.
@@ -94,6 +96,14 @@ implementations of the algorithms presented in the book
 ## Why? ##
 
 Because implementing these algorithms in Erlang would be too easy.
+
+Also, why not:
+
+![https://raw.githubusercontent.com/videlalvaro/phacterl/master/shooting.gif](https://raw.githubusercontent.com/videlalvaro/phacterl/master/shooting.gif)
+
+## Is this an April's Fool Joke ##
+
+According to my Julian Calendar, it's April's First here.
 
 ## LICENSE ##
 
